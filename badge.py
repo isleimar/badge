@@ -1,39 +1,43 @@
 import csv
 
 class BadgePage():
-    def __init__(self) -> None:
+    def __init__(self, name: str) -> None:
+        self.__name = name
         self.__width = 0
-        self.__height = 0
-        self.__backgroud_file = ""
-        self.__formating = []
+        self.__height = 0        
+        self.__formating = []        
         pass
+
+    @property
+    def name(self)->str:
+        return self.__name
+    @name.setter
+    def name(self, value: str):
+        self.__name = value
 
     @property
     def width(self)->int:
         return self.__width
     @width.setter
     def width(self, value: int):
-        self.__width = value    
+        self.__width = value
 
     @property
     def height(self)->int:
         return self.__height
     @height.setter
     def height(self, value: int):
-        self.__height = value
+        self.__height = value    
     
     @property
-    def backgroud_file(self)->str:
-        return self.__backgroud_file
-    @backgroud_file.setter
-    def backgroud_file(self, value: str):
-        self.__backgroud_file = value
+    def page_size(self):
+        return (self.width, self.height)
     
     @property
-    def formating(self)->str:
+    def formatting(self)->str:
         return self.__formating
-    @formating.setter
-    def formating(self, value: str):
+    @formatting.setter
+    def formatting(self, value: str):
         self.__formating = value
 
 
