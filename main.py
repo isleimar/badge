@@ -7,25 +7,27 @@ from pdf_badge import *
 
 
 # tamanho das páginas
-page_size = (300,400)
+page_size = (153,242)
 
 # formação das páginas
 page1_formatting = [
         {"type": "image", "name": "front_background", "value": "images/cracha_frente.jpg", "origin": (0,0), "size": page_size},
-        {"type": "group", "name": "first_last_name", "origin": (0,0), "value": [
-            {"type": "text", "name": "first_name", "source": "first_name", "origin":(36,43), "bold" : True, "font_size": 10},
-            {"type": "text", "name": "last_name", "source": "last_name", "origin":(89,43), "bold" : False, "font_size": 10},
+        {"type": "group", "name": "first_last_name", "origin": (77,43), "center": True, "value": [
+            {"type": "text", "name": "first_name", "source": "first_name", "origin":(0,0), "bold" : True, "font_size": 10},
+            {"type": "text", "name": "last_name", "source": "last_name", "origin":(0,0), "bold" : False, "font_size": 10},
         ]},
-        {"type": "text", "name": "gender", "source": "gender", "origin":(48,29), "bold" : True, "italic": True, "font_size": 10},
-        {"type": "image", "name": "photo_url", "source": "photo_url", "origin": (46,65), "size": (62, 83)},
+        {"type": "text", "name": "gender", "source": "gender", "origin":(77,29), "center": True, "bold" : True, "italic": True, "font_size": 10},
+        {"type": "image", "name": "photo_file", "source": "photo_file", "origin": (46,65), "size": (62, 83)},
     ]
 page2_formatting = [
         {"type": "image", "name": "back_background", "value": "images/cracha_verso.jpg", "origin": (0,0), "size": page_size},
         {"type": "text", "name": "full_name", "source": "full_name", "origin":(25,146), "bold" : False, "font_size": 7},
         {"type": "text", "name": "office", "source": "office", "origin":(25,126), "bold" : False, "font_size": 7},
         {"type": "text", "name": "siape", "source": "siape", "origin":(24,104), "bold" : False, "font_size": 7},
-        {"type": "text", "name": "blood_type", "source": "blood_type", "origin":(24,82), "bold" : False, "font_size": 7},
-        {"type": "text", "name": "rh_factor", "source": "rh_factor", "origin":(32,82), "bold" : False, "font_size": 7},
+        {"type": "group", "name": "blood_rh", "origin": (24,82), "value": [
+            {"type": "text", "name": "blood_type", "source": "blood_type", "origin":(0,0), "bold" : False, "font_size": 7},
+            {"type": "text", "name": "rh_factor", "source": "rh_factor", "origin":(0,0), "bold" : False, "font_size": 7},
+        ]},        
         {"type": "text", "name": "e_mail", "source": "e_mail", "origin":(24,62), "bold" : False, "font_size": 7},
     ]
 
@@ -35,12 +37,12 @@ def main():
     badge.read_data("data/badge.csv")
 
     page1 = BadgePage("page1")
-    page1.height, page1.width = page_size    
+    page1.width, page1.height  = page_size    
     page1.formatting = page1_formatting
     badge.inser_page(page1)
 
     page2 = BadgePage("page2")
-    page2.height, page2.width = page_size    
+    page2.width, page2.height = page_size    
     page2.formatting = page2_formatting
     badge.inser_page(page2)
 

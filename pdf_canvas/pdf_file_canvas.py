@@ -89,6 +89,11 @@ class PdfPageCanvas(PdfGroupElementCanvas):
     def set_page_size(self, page_size):
         self.width, self.height = page_size
         self.pdf.setPageSize(page_size)
+
+    def draw(self):        
+        for _, element in self.elements.items():            
+            element.draw()
+        self.pdf.showPage()
         
 
 

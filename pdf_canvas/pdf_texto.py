@@ -7,8 +7,7 @@ class PdfTexto(TextCanvas):
         super().__init__(name, parent)
 
     def __format(self):
-        font_name = self.__get_font_name()
-        print(font_name)
+        font_name = self.__get_font_name()        
         self.pdf.setFont(font_name, self.font_size)        
     
     def __get_font_name(self):
