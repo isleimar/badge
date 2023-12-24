@@ -125,5 +125,3 @@ class GroupElementCanva(ElementCanva):
         if ((min_vertical is None) or (max_vertical is None)):
             return 0
         return max_vertical - min_vertical
-    
-

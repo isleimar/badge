@@ -17,12 +17,12 @@ page1_formatting = [
             {"type": "text", "name": "last_name", "source": "last_name", "origin":(0,0), "bold" : False, "font_size": 10},
         ]},
         {"type": "text", "name": "gender", "source": "gender", "origin":(77,29), "center": True, "bold" : True, "italic": True, "font_size": 10},
-        {"type": "image", "name": "photo_file", "source": "photo_file", "origin": (46,65), "size": (62, 83)},
+        {"type": "image", "name": "photo_file", "source": "photo_file", "origin": (45.2,65.5), "size": (62.5, 82.7)},
     ]
 page2_formatting = [
         {"type": "image", "name": "back_background", "value": "images/cracha_verso.jpg", "origin": (0,0), "size": page_size},
-        {"type": "text", "name": "full_name", "source": "full_name", "origin":(25,146), "bold" : False, "font_size": 7},
-        {"type": "text", "name": "office", "source": "office", "origin":(25,126), "bold" : False, "font_size": 7},
+        {"type": "text", "name": "full_name", "source": "full_name", "origin":(25,145), "bold" : False, "font_size": 7},
+        {"type": "text", "name": "office", "source": "office", "origin":(25,125), "bold" : False, "font_size": 7},
         {"type": "text", "name": "siape", "source": "siape", "origin":(24,104), "bold" : False, "font_size": 7},
         {"type": "group", "name": "blood_rh", "origin": (24,82), "value": [
             {"type": "text", "name": "blood_type", "source": "blood_type", "origin":(0,0), "bold" : False, "font_size": 7},
@@ -34,7 +34,7 @@ page2_formatting = [
 
 def main():
     badge = Badge()    
-    badge.read_data("data/badge.csv")
+    badge.read_data("data/cracha.csv")
 
     page1 = BadgePage("page1")
     page1.width, page1.height  = page_size    
@@ -46,10 +46,7 @@ def main():
     page2.formatting = page2_formatting
     badge.inser_page(page2)
 
-
-
-
-    create_pdf_file("output/saida.pdf", badge)    
+    create_pdf_file("output/","photos/", badge)    
     pass
 
 if __name__ == "__main__":

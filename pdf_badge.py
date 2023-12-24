@@ -17,8 +17,7 @@ def create_image(page, element, data):
     image.file_name = value
     image.width, image.height = element.get("size",(10,10))
     image.origin = element.get("origin",(0,0))
-    page.insert(image)
-    print("Criar um imagem")
+    page.insert(image)    
 
 def create_texto(page, element, data):
     name = element['name']
@@ -32,7 +31,6 @@ def create_texto(page, element, data):
     text.font_name = "OpenSans"
     text.origin= element['origin']
     page.insert(text)
-    print("Criar um texto")
 
 def create_group(page, element, data):
     name = element['name']
@@ -42,9 +40,6 @@ def create_group(page, element, data):
     for text in element['value']:
         create_texto(group, text, data)
     page.insert(group)
-    print("Criar um grupo")
-
-
 
 def create_page(badge_page, pdf: PdfFileCanvas, data):
     pdf_page = PdfPageCanvas(badge_page.name)    
@@ -62,10 +57,13 @@ def create_page(badge_page, pdf: PdfFileCanvas, data):
     pdf_page.draw()
     
 
-def create_pdf_file(file_name, badge: Badge):
-    pdf = PdfFileCanvas(file_name)
-    for data in badge.data:        
+def create_pdf_file(output, photo_path, badge: Badge):
+    for data in badge.data:
+        id = data['id']
+        file_name ="{}{}.pdf".format(output,id)
+        pdf = PdfFileCanvas(file_name)
+        data['photo_file'] = "{}{}.jpg".format(photo_path,data['id']) 
         for badge_page in badge.badge_pages:
             create_page(badge_page, pdf, data)
-    pdf.save()
+        pdf.save()
     
