@@ -12,11 +12,11 @@ class ObjectCanva:
         return self.__name
     
     @property
-    def x_origin(self)->int:
+    def x_origin(self)->float:
         return self.origin[0]
     
     @property
-    def y_origin(self)->int:
+    def y_origin(self)->float:
         return self.origin[1]
     
     @property
@@ -31,25 +31,25 @@ class ObjectCanva:
         return self.origin
     
     @property
-    def width(self)->int:
+    def width(self)->float:
         return self.__width
     @width.setter
-    def width(self, value: int):
+    def width(self, value: float):
         self.__width = value
     
     @property
-    def rel_width(self)->int:
+    def rel_width(self)->float:
         return self.x_origin + self.width
     
     @property
-    def height(self)->int:
+    def height(self)->float:
         return self.__height
     @height.setter
-    def height(self, value: int):
+    def height(self, value: float):
         self.__height = value
     
     @property
-    def rel_height(self)->int:
+    def rel_height(self)->float:
         return self.y_origin + self.height
 
 class ElementCanva(ObjectCanva):
@@ -95,7 +95,7 @@ class GroupElementCanva(ElementCanva):
         self.elements[element.name] = element
     
     @property
-    def grp_width(self)->int:
+    def grp_width(self)->float:
         min_horizontal, max_horizontal = (0, super().width)        
         for _, element in self.elements.items():
             if min_horizontal is None:
@@ -111,7 +111,7 @@ class GroupElementCanva(ElementCanva):
         return max_horizontal - min_horizontal    
     
     @property
-    def grp_height(self)->int:
+    def grp_height(self)->float:
         min_vertical, max_vertical = (0, super().height)
         for _, element in self.elements.items():
             if min_vertical is None:

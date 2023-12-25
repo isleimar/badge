@@ -48,26 +48,31 @@ class PdfGroupElementCanvas(GroupElementCanva):
 
     @property
     def pdf(self):
-        return None if self.parent is None else self.parent.pdf
-    
+        return None if self.parent is None else self.parent.pdf    
 
     @property
-    def grp_width(self)->int:
+    def grp_width(self)->float:
         width = 0
         for _, element in self.elements.items():
             width += element.width
         return width
     
     @property
-    def shift_left(self):
+    def left_shift(self):
+        return 0
+    
+    @property
+    def top_shift(self):
         return 0
     
     def draw(self):
-        shift = -self.shift_left
+        left_shift = -self.left_shift
+        top_shift = -self.top_shift
         for _, element in self.elements.items():
             ex, ey = element.origin
-            element.origin = (ex + shift, ey)
-            shift += element.width
+            element.origin = (ex + left_shift, ey +top_shift)
+            left_shift += element.width
+            top_shift += 0
             element.draw()
 
 
@@ -77,9 +82,18 @@ class PdfCenterGroupElementCanvas(PdfGroupElementCanvas):
         super().__init__(name, parent)
     
     @property
-    def shift_left(self):
-        return int(self.grp_width / 2)
+    def left_shift(self):
+        return float(self.grp_width / 2)
 
+class PdfLineGroupElementCanvas(PdfGroupElementCanvas):
+
+    def draw(self):
+        left_shift, top_shift = (0, self.height)
+        for _, element in self.elements.items():            
+            ex, ey = element.origin
+            element.origin = (ex + left_shift, ey + top_shift)            
+            top_shift += ey - element.height 
+            element.draw()
 
 class PdfPageCanvas(PdfGroupElementCanvas):
 

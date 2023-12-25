@@ -7,34 +7,47 @@ from pdf_badge import *
 
 
 # tamanho das páginas
-page_size = (153,242)
+page_size = (153.071,243.780)
 
 # formação das páginas
 page1_formatting = [
-        {"type": "image", "name": "front_background", "value": "images/cracha_frente.jpg", "origin": (0,0), "size": page_size},
-        {"type": "group", "name": "first_last_name", "origin": (77,43), "center": True, "value": [
+        {"type": "image", "name": "front_background", "value": "images/cracha_frente.jpg", "origin": (0,0), "size": page_size},        
+        {"type": "group", "name": "first_last_name", "origin": (76.535,43.053), "center": True, "value": [
             {"type": "text", "name": "first_name", "source": "first_name", "origin":(0,0), "bold" : True, "font_size": 10},
             {"type": "text", "name": "last_name", "source": "last_name", "origin":(0,0), "bold" : False, "font_size": 10},
         ]},
-        {"type": "text", "name": "gender", "source": "gender", "origin":(77,29), "center": True, "bold" : True, "italic": True, "font_size": 10},
-        {"type": "image", "name": "photo_file", "source": "photo_file", "origin": (45.2,65.5), "size": (62.5, 82.7)},
+        {"type": "text", "name": "gender", "source": "gender", "origin":(76.535,28.963), "center": True, "bold" : True, "font_size": 10},
+        {"type": "image", "name": "photo_file", "source": "photo_file", "origin": (45.354,66.032), "size": (62.362, 83.187)},
     ]
 page2_formatting = [
         {"type": "image", "name": "back_background", "value": "images/cracha_verso.jpg", "origin": (0,0), "size": page_size},
-        {"type": "text", "name": "full_name", "source": "full_name", "origin":(25,145), "bold" : False, "font_size": 7},
-        {"type": "text", "name": "office", "source": "office", "origin":(25,125), "bold" : False, "font_size": 7},
-        {"type": "text", "name": "siape", "source": "siape", "origin":(24,104), "bold" : False, "font_size": 7},
-        {"type": "group", "name": "blood_rh", "origin": (24,82), "value": [
-            {"type": "text", "name": "blood_type", "source": "blood_type", "origin":(0,0), "bold" : False, "font_size": 7},
-            {"type": "text", "name": "rh_factor", "source": "rh_factor", "origin":(0,0), "bold" : False, "font_size": 7},
-        ]},        
-        {"type": "text", "name": "e_mail", "source": "e_mail", "origin":(24,62), "bold" : False, "font_size": 7},
+
+        {"type": "group", "name": "verse", "origin": (16.274,59.626), "line":True, "size":(123.282,93.220),"value": [
+            {"type": "text", "name": "full_name_title", "value": "NOME COMPLETO", "origin":(0,0), "bold" : True, "font_size": 6.43632746, "font_color":(0.2,0.2,0.2)},
+            {"type": "text", "name": "full_name", "source": "full_name", "origin":(9.392,4), "bold" : False, "font_size": 6.43632746, "font_color":(0.3,0.3,0.3)},
+
+            {"type": "text", "name": "office_title", "value": "CARGO", "origin":(0,0), "bold" : True, "font_size": 6.43632746, "font_color":(0.2,0.2,0.2)},
+            {"type": "text", "name": "office", "source": "office", "origin":(9.392,4), "bold" : False, "font_size": 6.43632746, "font_color":(0.3,0.3,0.3)},
+
+            {"type": "text", "name": "siape_title", "value": "SIAPE", "origin":(0,0), "bold" : True, "font_size": 6.43632746, "font_color":(0.2,0.2,0.2)},
+            {"type": "text", "name": "siape", "source": "siape", "origin":(9.392,4), "bold" : False, "font_size": 6.43632746, "font_color":(0.3,0.3,0.3)},
+
+            {"type": "text", "name": "blood_rh_title", "value": "TIPO SANGUÍNEO/ FATOR RH", "origin":(0,0), "bold" : True, "font_size": 6.43632746, "font_color":(0.2,0.2,0.2)},
+            {"type": "group", "name": "blood_rh", "origin": (9.392,4), "value": [
+                {"type": "text", "name": "blood_type", "source": "blood_type", "origin":(0,0), "bold" : False, "font_size": 6.43632746, "font_color":(0.3,0.3,0.3)},
+                {"type": "text", "name": "blood_space", "value": " ", "origin":(0,0), "bold" : False, "font_size": 6.43632746, "font_color":(0.3,0.3,0.3)},
+                {"type": "text", "name": "rh_factor", "source": "rh_factor", "origin":(0,0), "bold" : False, "font_size": 6.43632746, "font_color":(0.3,0.3,0.3)},
+            ]},        
+
+            {"type": "text", "name": "e_mail_title", "value": "E-MAIL INSTITUCIONAL", "origin":(0,-12), "bold" : True, "font_size": 6.43632746, "font_color":(0.2,0.2,0.2)},
+            {"type": "text", "name": "e_mail", "source": "e_mail", "origin":(9.392,4), "bold" : False, "font_size": 6.43632746, "font_color":(0.3,0.3,0.3)},
+        ]},
     ]
 
 
 def main():
     badge = Badge()    
-    badge.read_data("data/cracha.csv")
+    badge.read_data("data/cracha_lite.csv")
 
     page1 = BadgePage("page1")
     page1.width, page1.height  = page_size    

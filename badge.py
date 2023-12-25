@@ -16,17 +16,17 @@ class BadgePage():
         self.__name = value
 
     @property
-    def width(self)->int:
+    def width(self)->float:
         return self.__width
     @width.setter
-    def width(self, value: int):
+    def width(self, value: float):
         self.__width = value
 
     @property
-    def height(self)->int:
+    def height(self)->float:
         return self.__height
     @height.setter
-    def height(self, value: int):
+    def height(self, value: float):
         self.__height = value    
     
     @property

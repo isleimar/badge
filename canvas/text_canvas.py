@@ -9,7 +9,7 @@ class TextCanvas(ElementCanva):
         self.__font_size = 10
         self.__bold = False
         self.__italic = False
-        self.__font_color = (0,0,0)
+        self.__font_color = (255,255,255)
         self.__text = ""
     
     @property
@@ -20,10 +20,10 @@ class TextCanvas(ElementCanva):
         self.__font_name = value
     
     @property
-    def font_size(self)->int:
+    def font_size(self)->float:
         return self.__font_size
     @font_size.setter
-    def font_size(self, value: int):
+    def font_size(self, value: float):
         self.__font_size = value
     
     @property
@@ -55,7 +55,7 @@ class TextCanvas(ElementCanva):
         self.__text = value
     
     @property
-    def shift_left(self)->int:
+    def shift_left(self)->float:
         return 0
     
 
@@ -65,8 +65,8 @@ class CenterTextCanvas(TextCanvas):
         super().__init__(name, parent)
     
     @property
-    def shift_left(self)->int:
-        return int(self.width / 2)
+    def shift_left(self)->float:
+        return float(self.width / 2)
 
 
 class GroupTextCanvas(GroupElementCanva):
@@ -75,11 +75,11 @@ class GroupTextCanvas(GroupElementCanva):
         super().__init__(name, parent)
     
     @property
-    def shift_left(self)->int:
+    def shift_left(self)->float:
         return 0
 
     @property
-    def grp_width(self)->int:
+    def grp_width(self)->float:
         max_width = 0
         for _, element in self.elements.items():
             max_width = max_width if max_width > element.width else element.width
@@ -91,6 +91,6 @@ class CenterGroupTextCanvas(GroupElementCanva):
         super().__init__(name, parent)
     
     @property
-    def shift_left(self)->int:
-        return int(self.width / 2)    
+    def shift_left(self)->float:
+        return float(self.width / 2)    
     
